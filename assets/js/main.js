@@ -775,7 +775,6 @@ class Marquee {
 
   // Reinitialize marquees on window resize
   reinitialize() {
-    console.log("Reinitializing marquees...");
     this.init();
   }
 

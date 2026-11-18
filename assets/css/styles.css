@@ -982,28 +982,28 @@ img[class*="aspect:"], [class*="aspect:"]:not(img) img {
 }
 @font-face {
   font-family: "Instrument Serif";
-  src: url("../fonts/InstrumentSerif-Regular.ttf") format("truetype");
+  src: url("../fonts/InstrumentSerif-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Instrument Serif";
-  src: url("../fonts/InstrumentSerif-Italic.ttf") format("truetype");
+  src: url("../fonts/InstrumentSerif-Italic.woff2") format("woff2");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins-Regular.ttf") format("truetype");
+  src: url("../fonts/Poppins-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+  src: url("../fonts/Poppins-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -1139,14 +1139,23 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
 }
-.lenis.lenis-stopped {
-  overflow: hidden;
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+  overscroll-behavior: contain;
 }
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
 }
 html, body {
   font-family: var(--font-body);

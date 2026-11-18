@@ -1,6 +1,6 @@
 # Alpha 1 Million
 
-A lightweight WordPress theme built for the `alpha.org.au` project by Beech Agency.
+A lightweight WordPress theme for the Alpha Australia One Million site (`onemillion.alpha.org.au`), built by Beech Agency.
 
 ## Overview
 
@@ -29,9 +29,17 @@ A lightweight WordPress theme built for the `alpha.org.au` project by Beech Agen
 
 ## Development notes
 
-- The theme is currently version `1.1.0` and targets compatibility with WordPress `5.4`.
-- Requires PHP `5.6` or later.
+- Theme version, minimum PHP and tested WordPress version live in the `style.css` header (currently PHP `8.1`+, tested up to WordPress `6.9`).
 - Text domain: `bfc`
+- Third-party JS is vendored in `assets/js/vendor/` and pinned by version in the file name (e.g. Locomotive Scroll `5.1.1`). Don't load libraries from a CDN dist-tag such as `@beta` or `@latest`: tags move or get removed and the site breaks without any code change.
+- Fonts are `.woff2` in `assets/fonts/`. Only add the weights the CSS actually uses.
+
+## Releasing
+
+Sites update through `inc/updater.php`, which checks the latest GitHub release of `Alpha-Australia/alpha-1m`.
+
+1. Bump `Version` in `style.css`.
+2. Push a tag matching that version (e.g. `1.1.1`). The `Package WordPress Theme` workflow zips the theme and attaches `alpha-1m.zip` to a release.
 
 ## Customization
 

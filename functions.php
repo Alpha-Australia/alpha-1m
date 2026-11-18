@@ -184,22 +184,6 @@ function bfc_scripts() {
 add_action( 'wp_enqueue_scripts', 'bfc_scripts' );
 
 /**
- * Add goodness to deal with defering scripts
- */
-add_filter( 'script_loader_tag', 'bfc_defer_scripts', 10, 3 );
-function bfc_defer_scripts( $tag, $handle, $src ) {
-
-	// The handles of the enqueued scripts we want to defer
-	$defer_scripts = array( 'blocks' );
-
-    if ( in_array( $handle, $defer_scripts ) ) {
-        return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
-    }
-    
-    return $tag;
-} 
-
-/**
  * Registers an editor stylesheet for the theme.
  */
 function bfc_theme_add_editor_styles() {
@@ -283,12 +267,13 @@ require get_stylesheet_directory().'/inc/updater.php';
 
 
 $updater = new Alpha_Theme_Updater( __FILE__ );
-$updater->set_username( 'BeechAgency' );
+$updater->set_username( 'Alpha-Australia' );
 $updater->set_repository( 'alpha-1m' );
 $updater->set_theme('alpha-1m'); 
 
-if( $update_key ) {
-    $updater->authorize($update_key);    
+// The repo is public so no token is needed. Define ALPHA_1M_UPDATE_KEY in wp-config.php if it ever goes private.
+if ( defined( 'ALPHA_1M_UPDATE_KEY' ) ) {
+    $updater->authorize( ALPHA_1M_UPDATE_KEY );
 }
 
 $updater->initialize();

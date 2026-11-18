@@ -30,12 +30,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php 
-	$classes = array('debug', 'active:gradient-1');
-	$post_type = get_post_type();
-?>
- class="debug active:gradient-1">
+<body class="active:gradient-1">
 <?php wp_body_open(); ?>
-<div id="page" class="site debug">
+<div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'bfc' ); ?></a>
 	<?php get_template_part('template-parts/nav/nav', null); ?>
