@@ -205,12 +205,6 @@
 
 	<?php wp_footer(); ?>
 
-	<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
-	<script>
-		const locomotiveScroll = new LocomotiveScroll();
-		window.locomotiveScroll = locomotiveScroll;
-	</script>
-
 	<!--  THANKS MIKE! https://codepen.io/Mikhail-Bespalov/pen/MYwrMNy?editors=1100 -->
 	<svg style="position:absolute;width:0;height:0">
 		<filter id="frosted" primitiveUnits="objectBoundingBox">

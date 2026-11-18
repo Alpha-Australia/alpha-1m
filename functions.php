@@ -174,6 +174,12 @@ function bfc_scripts() {
 	wp_enqueue_style( 'bfc-style', get_template_directory_uri() . '/assets/css/styles.css', array(), _BFC_VERSION );
 	
 	wp_enqueue_script( 'bfc-main', get_template_directory_uri() . '/assets/js/main.js', array(), _BFC_VERSION, true );
+
+	// Locomotive Scroll is served locally and pinned to a version. Don't load it from a CDN dist-tag
+	// like @beta: the tag was removed upstream and the 404 stopped every scroll animation on the site.
+	// Loaded after main.js so the window listeners for the data-scroll-call events are already registered.
+	wp_enqueue_script( 'locomotive-scroll', get_template_directory_uri() . '/assets/js/vendor/locomotive-scroll.5.1.1.min.js', array( 'bfc-main' ), '5.1.1', true );
+	wp_add_inline_script( 'locomotive-scroll', 'window.locomotiveScroll = new LocomotiveScroll();' );
 }
 add_action( 'wp_enqueue_scripts', 'bfc_scripts' );
 
